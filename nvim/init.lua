@@ -35,7 +35,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Spellcheck, except for CJK characters, and check camelcased words separately
-vim.o.spell = true
+vim.o.spell = false
 vim.o.spelllang = 'en_us,cjk'
 vim.o.spelloptions = 'camel'
 

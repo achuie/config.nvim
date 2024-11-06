@@ -13,8 +13,7 @@
     # };
   };
 
-  outputs =
-    { self, nixpkgs, gen-luarc, ... } @ inputs:
+  outputs = { self, nixpkgs, gen-luarc, ... } @ inputs:
     let
       # This is where the Neovim derivation is built.
       neovim-overlay = import ./nix/neovim-overlay.nix { inherit inputs; };
