@@ -5,6 +5,12 @@ vim.g.did_load_autocommands_plugin = true
 
 local api = vim.api
 
+-- Recognize Pollen files as Racket code
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWritePost' }, {
+  pattern = { '*.p', '*.pp', '*.pm' },
+  command = 'set filetype=racket',
+})
+
 local tempdirgroup = api.nvim_create_augroup('tempdir', { clear = true })
 -- Do not set undofile for files in /tmp
 api.nvim_create_autocmd('BufWritePre', {
@@ -24,14 +30,14 @@ api.nvim_create_autocmd('TermOpen', {
   end,
 })
 
--- LSP
+--[[ LSP ]]
 local keymap = vim.keymap
 
 local function preview_location_callback(_, result)
   if result == nil or vim.tbl_isempty(result) then
     return nil
   end
-  local buf, _ = vim.lsp.util.preview_location(result[1])
+  local buf, _ = vim.lsp.util.preview_location(result[1], {})
   if buf then
     local cur_buf = vim.api.nvim_get_current_buf()
     vim.bo[buf].filetype = vim.bo[cur_buf].filetype
