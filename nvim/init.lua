@@ -279,14 +279,15 @@ vim.keymap.set('c', '%%', function()
 end, { expr = true, desc = "expand to current buffer's directory" })
 
 -- Diagnostic navigation
-vim.keymap.set('n', '<space>e', function()
+vim.keymap.set('n', '<leader>e', function()
   local _, winid = vim.diagnostic.open_float(nil, { scope = 'line' })
   if not winid then
     vim.notify('no diagnostics found', vim.log.levels.INFO)
     return
   end
   vim.api.nvim_win_set_config(winid or 0, { focusable = true })
-end, { noremap = true, desc = 'diagnostics floating window' })
+end, { noremap = true, desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, desc = 'previous [d]iagnostic' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, desc = 'next [d]iagnostic' })
 vim.keymap.set('n', '[e', function()
