@@ -80,8 +80,9 @@ vim.o.splitbelow = true
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
--- Better completion experience: only fill from menu when selected
-vim.o.completeopt = 'menuone,noselect,noinsert,preview'
+-- Better completion experience: only fill from menu when selected and limit menu height
+vim.o.completeopt = 'menu,menuone,noselect,noinsert,preview'
+vim.o.pumheight = 20
 
 -- Enable folds; open all folds quickly by toggling off with `zi`
 vim.o.foldenable = true
