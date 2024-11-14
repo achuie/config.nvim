@@ -24,7 +24,7 @@ end
 
 cmp.setup {
   completion = {
-    completeopt = 'menu,menuone,noinsert',
+    completeopt = 'menu,menuone,noinsert,noselect',
     -- autocomplete = false,
   },
   formatting = {
