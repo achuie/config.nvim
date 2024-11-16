@@ -97,6 +97,7 @@ with final.pkgs.lib; let
     nixd
     ruff-lsp  # Python
     clang-tools
+    rust-analyzer
   ];
 in {
   # This is the neovim derivation
