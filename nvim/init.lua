@@ -370,3 +370,12 @@ vim.diagnostic.config {
     prefix = '',
   },
 }
+
+
+--[[ Filetypes ]]
+
+vim.filetype.add({
+  extension = {
+    pm = 'pollen'
+  }
+})
