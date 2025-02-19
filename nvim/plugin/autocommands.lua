@@ -5,12 +5,6 @@ vim.g.did_load_autocommands_plugin = true
 
 local api = vim.api
 
--- Recognize Pollen files as Racket code
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWritePost' }, {
-  pattern = { '*.p', '*.pp', '*.pm' },
-  command = 'set filetype=racket',
-})
-
 local tempdirgroup = api.nvim_create_augroup('tempdir', { clear = true })
 -- Do not set undofile for files in /tmp
 api.nvim_create_autocmd('BufWritePre', {
