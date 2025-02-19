@@ -8,8 +8,9 @@ whichkey.setup {
   preset = 'helix'
 }
 whichkey.add({
-  { "<leader>c", desc = "[c]ode" },
+  { "<leader>c", desc = "[c]hange" },
   { "<leader>s", desc = "[s]earch" },
   { "<leader>g", desc = "[g]it" },
   { "<leader>s", desc = "[s]earch", mode = "v" },
+  { "<leader>t", desc = "[t]elescope" },
 })
