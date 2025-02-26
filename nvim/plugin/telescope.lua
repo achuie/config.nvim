@@ -126,7 +126,9 @@ vim.keymap.set('v', '<leader>/', function()
   builtin.current_buffer_fuzzy_find({ default_text = text })
 end, { desc = '[/] fuzzily search for current selection in current buffer' })
 
-vim.keymap.set('n', '<leader>tt', builtin.treesitter, { desc = '[t]elescope [t]ags' })
+vim.keymap.set('n', '<leader>tt', function()
+  builtin.treesitter({ symbol_width = 0.8 })
+end, { desc = '[t]elescope [t]ags' })
 
 telescope.setup {
   defaults = {
