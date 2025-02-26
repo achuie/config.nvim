@@ -174,12 +174,14 @@ telescope.setup {
     },
   },
   extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
       override_file_sorter = true,
+      case_mode = 'smart_case',
     },
   },
 }
 
-telescope.load_extension('fzy_native')
+telescope.load_extension('fzf')
 -- telescope.load_extension('smart_history')
