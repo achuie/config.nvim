@@ -177,10 +177,27 @@
         "type": "github"
       }
     },
+    "org-roam-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741743369,
+        "narHash": "sha256-KEmbFGXjOlSPY8wpr5WUzD5+eCUP1hXN2Ty37smLU9M=",
+        "owner": "chipsenkbeil",
+        "repo": "org-roam.nvim",
+        "rev": "f92b54eff931982031d5e164482d5e781bb2cd31",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chipsenkbeil",
+        "repo": "org-roam.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "gen-luarc": "gen-luarc",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "org-roam-nvim": "org-roam-nvim"
       }
     }
   },
