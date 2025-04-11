@@ -72,7 +72,7 @@ with final.pkgs.lib; let
     vim-sleuth  # Detect tabstop and shiftwidth | https://github.com/tpope/vim-sleuth
 
     # navigation/editing enhancement plugins
-    vim-dirvish  # Better file browser | https://github.com/justinmk/vim-dirvish/
+    oil-nvim  # Better file browser | https://github.com/stevearc/oil.nvim/
     vim-wordmotion  # Camel- and snake- case word motions | https://github.com/chaoren/vim-wordmotion/
     vim-indentwise  # Indent navigation for huge Python files | https://github.com/jeetsukumaran/vim-indentwise/
     nvim-surround # https://github.com/kylechui/nvim-surround/
@@ -80,6 +80,12 @@ with final.pkgs.lib; let
 
     # Useful utilities
     # nvim-unception  # Prevent nested neovim sessions | nvim-unception
+
+    # Orgmode
+    orgmode
+    ((mkNvimPlugin inputs.org-roam-nvim "org-roam.nvim").overrideAttrs {  # networked orgmode notes | https://github.com/chipsenkbeil/org-roam.nvim
+      dependencies = [ orgmode ];
+    })
 
     # libraries that other plugins depend on
     sqlite-lua
