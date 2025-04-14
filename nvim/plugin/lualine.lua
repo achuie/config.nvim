@@ -33,6 +33,7 @@ require('lualine').setup {
     lualine_c = {
       'filename',
       -- nvim-navic
+      -- { navic.get_location, cond = navic.is_available },
       { function() return navic.get_location() end, cond = navic.is_available },
     },
     -- lualine_z = {
