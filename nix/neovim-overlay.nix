@@ -102,8 +102,8 @@ with final.pkgs.lib; let
   extraPackages = with pkgs; [
     # language servers, etc.
     lua-language-server
-    nixd
-    ruff-lsp  # Python
+    nil
+    ruff  # Python
     clang-tools
     rust-analyzer
   ];
