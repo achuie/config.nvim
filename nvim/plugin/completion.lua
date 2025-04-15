@@ -107,7 +107,7 @@ cmp.setup {
       else
         fallback()
       end
-    end, { 'i', 'c', 's' }),
+    end, { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -116,7 +116,7 @@ cmp.setup {
       else
         fallback()
       end
-    end, { 'i', 'c', 's' }),
+    end, { 'i', 's' }),
   },
   sources = cmp.config.sources {
     -- The insertion order influences the priority of the sources
@@ -150,6 +150,7 @@ cmp.setup.cmdline({ '/', '?' }, {
     { name = 'cmdline_history' },
     { name = 'buffer' },
     { name = 'nvim_lsp_document_symbol', keyword_length = 3 },
+    { name = 'orgmode' },
   },
   view = {
     entries = { name = 'wildmenu', separator = '|' },
@@ -163,6 +164,7 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' },
     { name = 'cmdline_history' },
     { name = 'path' },
+    { name = 'orgmode' },
   },
 })
 
