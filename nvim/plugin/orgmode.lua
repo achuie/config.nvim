@@ -11,7 +11,7 @@ require('orgmode').setup({
   org_capture_templates = {
     s = {
       description = 'Scratch',
-      template = '* Unnamed %u\n%?\n%a',
+      template = '* Untitled %u\n%?\n%a',
     },
     t = {
       description = 'Task',
