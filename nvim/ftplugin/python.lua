@@ -10,7 +10,7 @@ local root_files = {
 
 vim.lsp.start {
   name = 'ruff',
-  cmd = { 'ruff server' },
+  cmd = { 'ruff', 'server' },
   root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
   single_file_support = true,
   capabilities = require('user.lsp').make_client_capabilities(),
