@@ -147,9 +147,9 @@ cmp.setup.filetype('lua', {
 cmp.setup.cmdline({ '/', '?' }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'nvim_lsp_document_symbol', keyword_length = 3 },
-    { name = 'buffer' },
     { name = 'cmdline_history' },
+    { name = 'buffer' },
+    { name = 'nvim_lsp_document_symbol', keyword_length = 3 },
   },
   view = {
     entries = { name = 'wildmenu', separator = '|' },
