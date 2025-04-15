@@ -7,17 +7,20 @@ local detail = false
 require('oil').setup({
   default_file_explorer = true,
   keymaps = {
-    ["gd"] = {
-      desc = "Toggle file detail view",
+    ['gd'] = {
+      desc = 'Toggle file detail view',
       callback = function()
         detail = not detail
         if detail then
-          require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+          require('oil').set_columns({ 'icon', 'permissions', 'size', 'mtime' })
         else
-          require("oil").set_columns({ "icon" })
+          require('oil').set_columns({ 'icon' })
         end
       end,
     },
+    ['o'] = { 'actions.select', opts = { horizontal = true } },
+    ['a'] = { 'actions.select', opts = { vertical = true } },
+    ['gt'] = { 'actions.select', opts = { tab = true } },
   },
 })
 
