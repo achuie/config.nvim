@@ -162,7 +162,7 @@ vim.keymap.set('n', '<Leader>l', function()
     \ else <Bar>
     \   let w:long_line_match = matchadd('ErrorMsg','\%>80v.\+',-1) <Bar>
     \ endif]], true, true, true))
-end, { silent = true })
+end, { desc = 'highlight [l]ong lines', silent = true })
 
 -- Fill line with char
 vim.cmd([[function! FillLine(str)
