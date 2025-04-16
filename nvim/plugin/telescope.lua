@@ -89,7 +89,9 @@ vim.keymap.set('n', '<leader>tc', builtin.quickfix, { desc = '[t]elescope quickf
 vim.keymap.set('n', '<leader>tq', builtin.command_history, { desc = '[t]elescope command history [q]' })
 vim.keymap.set('n', '<leader>tl', builtin.loclist, { desc = '[t]elescope [l]oclist' })
 vim.keymap.set('n', '<leader>tr', builtin.registers, { desc = '[t]elescope [r]egisters' })
-vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] find existing buffers' })
+vim.keymap.set('n', '<leader><space>', function()
+  builtin.buffers({ sort_mru = true })
+end, { desc = '[ ] find existing buffers' })
 vim.keymap.set(
   'n',
   '<leader>/',
