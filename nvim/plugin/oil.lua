@@ -18,9 +18,8 @@ require('oil').setup({
         end
       end,
     },
-    ['go'] = { 'actions.select', opts = { horizontal = true } },
-    ['ga'] = { 'actions.select', opts = { vertical = true } },
-    ['gt'] = { 'actions.select', opts = { tab = true } },
+    ['<C-v>'] = { 'actions.select', opts = { horizontal = true } },
+    ['<C-h>'] = { 'actions.select', opts = { vertical = true } },
   },
 })
 
