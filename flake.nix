@@ -12,10 +12,6 @@
     #   url = "github:Cassin01/wf.nvim";
     #   flake = false;
     # };
-    org-roam-nvim = {
-      url = "github:chipsenkbeil/org-roam.nvim";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {
