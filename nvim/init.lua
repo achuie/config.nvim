@@ -19,6 +19,7 @@ vim.o.confirm = true
 
 -- Enable mouse mode but not in Visual
 vim.o.mouse = 'nih'
+vim.o.mousescroll = 'ver:1,hor:1'
 
 -- Make relative line numbers default
 vim.o.number = true
