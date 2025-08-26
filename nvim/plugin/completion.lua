@@ -124,7 +124,6 @@ cmp.setup {
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'buffer' },
     { name = 'path' },
-    { name = 'orgmode' },
   },
   enabled = function()
     return vim.bo[0].buftype ~= 'prompt'
@@ -150,7 +149,6 @@ cmp.setup.cmdline({ '/', '?' }, {
     { name = 'cmdline_history' },
     { name = 'buffer' },
     { name = 'nvim_lsp_document_symbol', keyword_length = 3 },
-    { name = 'orgmode' },
   },
   view = {
     entries = { name = 'wildmenu', separator = '|' },
@@ -164,7 +162,6 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' },
     { name = 'cmdline_history' },
     { name = 'path' },
-    { name = 'orgmode' },
   },
 })
 

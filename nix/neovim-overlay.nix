@@ -83,12 +83,6 @@ with final.pkgs.lib; let
     # Useful utilities
     # nvim-unception  # Prevent nested neovim sessions | nvim-unception
 
-    # Orgmode
-    orgmode
-    ((mkNvimPlugin inputs.org-roam-nvim "org-roam.nvim").overrideAttrs {  # networked orgmode notes | https://github.com/chipsenkbeil/org-roam.nvim
-      dependencies = [ orgmode ];
-    })
-
     # libraries that other plugins depend on
     sqlite-lua
     plenary-nvim
