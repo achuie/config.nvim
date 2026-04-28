@@ -7,6 +7,8 @@ local tokyonight = require('tokyonight')
 
 tokyonight.setup {
   style = "moon",
+  light_style = "day",
+  day_brightness = 0.2,
   on_highlights = function(hl, c)
     -- Show gutter tildes beyond end of file
     hl.EndOfBuffer = { fg = c.bg_highlight }
