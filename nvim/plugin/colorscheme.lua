@@ -3,19 +3,35 @@ if vim.g.did_load_colorscheme_plugin then
 end
 vim.g.did_load_colorscheme_plugin = true
 
-local tokyonight = require('tokyonight')
-
-tokyonight.setup {
-  style = "moon",
-  light_style = "day",
-  day_brightness = 0.2,
-  on_highlights = function(hl, c)
-    -- Show gutter tildes beyond end of file
-    hl.EndOfBuffer = { fg = c.bg_highlight }
-    hl.CursorLineNr = { bold = true, fg = c.fg_dark }
-    hl.LineNrAbove = { fg = c.dark3 }
-    hl.LineNrBelow = { fg = c.dark3 }
-  end,
+local nightfox = require('nightfox')
+nightfox.setup {
+  options = {
+    styles = {
+      comments = "italic",
+      keywords = "italic"
+    }
+  },
+  groups = {
+    all = {
+      EndOfBuffer = { fg = "bg4" }
+    }
+  },
 }
 
-vim.cmd.colorscheme "tokyonight"
+local autotheme = function()
+  if vim.o.background == "light" and vim.g.fox_theme ~= "dayfox" then
+    vim.g.fox_theme = "dayfox"
+    vim.cmd.colorscheme("dayfox")
+  end
+  if vim.o.background == "dark" and vim.g.fox_theme ~= "nightfox" then
+    vim.g.fox_theme = "nightfox"
+    vim.cmd.colorscheme("terafox")
+  end
+end
+
+autotheme()
+
+vim.api.nvim_create_autocmd("OptionSet", {
+  pattern = "background",
+  callback = autotheme,
+})

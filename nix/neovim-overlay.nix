@@ -35,7 +35,7 @@ with final.pkgs.lib; let
     luasnip # snippets | https://github.com/l3mon4d3/luasnip/
 
     # Colorscheme
-    tokyonight-nvim  # https://github.com/folke/tokyonight.nvim
+    nightfox-nvim  # https://github.com/EdenEast/nightfox.nvim
 
     # autocompletion and extensions
     nvim-cmp  # autocompletion | https://github.com/hrsh7th/nvim-cmp
