@@ -36,6 +36,9 @@
           # The generated file can be symlinked in the devShell's shellHook.
           inputs.gen-luarc.overlays.default
         ];
+        config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+          "vim-wordmotion"
+        ];
       };
       shell = pkgs.mkShell {
         name = "nvim-devShell";
