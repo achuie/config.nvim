@@ -27,22 +27,11 @@ with final.pkgs.lib; let
   #   optional = <true|false>; # Default: false
   #   ...
   # }
-  all-plugins = with pkgs.vimPlugins; [
-    # plugins from nixpkgs go in here.
-    # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
-
+  min-plugins = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars  # Highlighting for most languages | https://github.com/nvim-treesitter/nvim-treesitter
-    luasnip # snippets | https://github.com/l3mon4d3/luasnip/
-
-    # Colorscheme
-    nightfox-nvim  # https://github.com/EdenEast/nightfox.nvim
 
     # autocompletion and extensions
     nvim-cmp  # autocompletion | https://github.com/hrsh7th/nvim-cmp
-    cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
-    lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
-    cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
-    cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
     cmp-buffer # current buffer as completion source | https://github.com/hrsh7th/cmp-buffer/
     cmp-path # file paths as completion source | https://github.com/hrsh7th/cmp-path/
     cmp-nvim-lua # neovim lua API as completion source | https://github.com/hrsh7th/cmp-nvim-lua/
@@ -55,18 +44,12 @@ with final.pkgs.lib; let
     gitsigns-nvim # https://github.com/lewis6991/gitsigns.nvim/
     vim-fugitive # https://github.com/tpope/vim-fugitive/
 
-    # telescope and extensions
-    telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
-    telescope-fzf-native-nvim # https://github.com/nvim-telescope/telescope-fzf-native.nvim
-    # telescope-smart-history-nvim # https://github.com/nvim-telescope/telescope-smart-history.nvim
-
     # UI
     lualine-nvim # Status line | https://github.com/nvim-lualine/lualine.nvim/
-    nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
     statuscol-nvim # Status column | https://github.com/luukvbaal/statuscol.nvim/
-    nvim-treesitter-context # nvim-treesitter-context
     which-key-nvim  # Keybinding help popup | https://github.com/folke/which-key.nvim
     indent-blankline-nvim  # Draw indentation guides | https://github.com/lukas-reineke/indent-blankline.nvim
+    nvim-treesitter-context # nvim-treesitter-context
 
     # language support
     comment-nvim  # Toggle comments | https://github.com/numToStr/Comment.nvim
@@ -80,14 +63,37 @@ with final.pkgs.lib; let
     nvim-surround # https://github.com/kylechui/nvim-surround/
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
 
-    # Useful utilities
-    # nvim-unception  # Prevent nested neovim sessions | nvim-unception
-
     # libraries that other plugins depend on
     sqlite-lua
     plenary-nvim
     nvim-web-devicons
     vim-repeat
+  ];
+  all-plugins = with pkgs.vimPlugins; min-plugins ++ [
+    # plugins from nixpkgs go in here.
+    # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=vimPlugins
+
+    luasnip # snippets | https://github.com/l3mon4d3/luasnip/
+
+    # Colorscheme
+    nightfox-nvim  # https://github.com/EdenEast/nightfox.nvim
+
+    # autocompletion and extensions
+    cmp_luasnip # snippets autocompletion extension for nvim-cmp | https://github.com/saadparwaiz1/cmp_luasnip/
+    lspkind-nvim # vscode-like LSP pictograms | https://github.com/onsails/lspkind.nvim/
+    cmp-nvim-lsp # LSP as completion source | https://github.com/hrsh7th/cmp-nvim-lsp/
+    cmp-nvim-lsp-signature-help # https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/
+
+    # telescope and extensions
+    telescope-nvim # https://github.com/nvim-telescope/telescope.nvim/
+    telescope-fzf-native-nvim # https://github.com/nvim-telescope/telescope-fzf-native.nvim
+    # telescope-smart-history-nvim # https://github.com/nvim-telescope/telescope-smart-history.nvim
+
+    # UI
+    nvim-navic # Add LSP location to lualine | https://github.com/SmiteshP/nvim-navic
+
+    # Useful utilities
+    # nvim-unception  # Prevent nested neovim sessions | nvim-unception
 
     # bleeding-edge plugins from flake inputs
     # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
@@ -107,6 +113,9 @@ in {
   nvim-pkg = mkNeovim {
     plugins = all-plugins;
     inherit extraPackages;
+    ignoreConfigRegexes = [
+      "^plugin/terminal-compat.lua"
+    ];
   };
 
   # This is meant to be used within a devshell.
@@ -117,6 +126,18 @@ in {
     inherit extraPackages;
     appName = "nvim-dev";
     wrapRc = false;
+    ignoreConfigRegexes = [
+      "^plugin/terminal-compat.lua"
+    ];
+  };
+
+  nvim-min = mkNeovim {
+    plugins = min-plugins;
+    ignoreConfigRegexes = [
+      "^plugin/colorscheme.lua"
+      "^plugin/completion.lua"
+      "^plugin/telescope.lua"
+    ];
   };
 
   # This can be symlinked in the devShell's shellHook

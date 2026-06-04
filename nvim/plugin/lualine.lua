@@ -3,8 +3,10 @@ if vim.g.did_load_lualine_plugin then
 end
 vim.g.did_load_lualine_plugin = true
 
-local navic = require('nvim-navic')
-navic.setup {}
+local navic_ok, navic = pcall(require, 'nvim-navic')
+if navic_ok then
+  navic.setup {}
+end
 
 ---Indicators for special modes,
 ---@return string status
@@ -27,15 +29,16 @@ local function extra_mode_status()
   return ''
 end
 
+local lualine_c = { 'filename' }
+if navic_ok then
+  -- nvim-navic
+  table.insert(lualine_c, { function() return navic.get_location() end, cond = navic.is_available })
+end
+
 require('lualine').setup {
   globalstatus = true,
   sections = {
-    lualine_c = {
-      'filename',
-      -- nvim-navic
-      -- { navic.get_location, cond = navic.is_available },
-      { function() return navic.get_location() end, cond = navic.is_available },
-    },
+    lualine_c = lualine_c,
     -- lualine_z = {
     --   -- (see above)
     --   { extra_mode_status },

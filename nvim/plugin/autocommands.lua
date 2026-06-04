@@ -63,8 +63,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
 
     -- Attach plugins
-    if client.server_capabilities['documentSymbolProvider'] ~= nil then
-      require('nvim-navic').attach(client, bufnr)
+    local navic_ok, navic = pcall(require, 'nvim-navic')
+    if navic_ok and client.server_capabilities['documentSymbolProvider'] ~= nil then
+      navic.attach(client, bufnr)
       vim.g.did_navic_attach = true
     else
       vim.g.did_navic_attach = false
