@@ -48,7 +48,7 @@ vim.o.shiftwidth = 4
 vim.o.tabstop = 8
 
 -- Set line length
-vim.o.textwidth = 120
+vim.o.textwidth = 100
 
 --[[
   c  Auto-wrap comments using textwidth, inserting the current comment leader
@@ -73,6 +73,9 @@ vim.o.nrformats = 'bin,hex'
 -- Save undo history
 vim.o.undofile = true
 
+-- Reload changed file automatically
+vim.o.autoread = true
+
 -- Normal split directions
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -91,8 +94,8 @@ vim.o.foldenable = true
 -- Prettier folds
 vim.o.fillchars = [[foldopen:,foldclose:]]
 
--- Mujin controller access
-vim.g.netrw_scp_cmd = 'scp -q -i ~/.ssh/mujin/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+-- Access remote machine with specific key
+-- vim.g.netrw_scp_cmd = 'scp -q -i ~/.ssh/mujin/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 -- Highlight cursor's current line
 vim.o.cursorline = true
