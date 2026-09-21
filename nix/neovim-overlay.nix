@@ -60,6 +60,7 @@ with final.pkgs.lib; let
     oil-nvim  # Better file browser | https://github.com/stevearc/oil.nvim/
     vim-wordmotion  # Camel- and snake- case word motions | https://github.com/chaoren/vim-wordmotion/
     vim-indentwise  # Indent navigation for huge Python files | https://github.com/jeetsukumaran/vim-indentwise/
+    vim-unimpaired # predefined ] and [ navigation keymaps | https://github.com/tpope/vim-unimpaired/
     nvim-surround # https://github.com/kylechui/nvim-surround/
     nvim-treesitter-textobjects # https://github.com/nvim-treesitter/nvim-treesitter-textobjects/
 
